@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 Future<Album> fetchAlbum() async {
-  final response =
-      await Dio().get('https://jsonplaceholder.typicode.com/albums/1');
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
+  try {
+    var response =
+        await Dio().get('https://jsonplaceholder.typicode.com/albums/1');
     return Album.fromJson(response.data);
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
+  } catch (e) {
     throw Exception('Failed to load album');
   }
 }
