@@ -1,3 +1,4 @@
+import 'package:dio_exapmle/album.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -8,26 +9,6 @@ Future<Album> fetchAlbum() async {
     return Album.fromJson(response.data);
   } catch (e) {
     throw Exception('Failed to load album');
-  }
-}
-
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  const Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
   }
 }
 
